@@ -1,68 +1,104 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1300" height="160" viewBox="0 0 1300 160">
   <defs>
-    <!-- Индивидуальное свечение для каждой буквы -->
-    <filter id="glowLetter" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="6" result="blur1"/>
-      <feGaussianBlur stdDeviation="12" result="blur2"/>
+    <!-- Тёплое золотое свечение для каждой буквы -->
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Размытие для создания свечения -->
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="8" result="blur2"/>
+      
+      <!-- Тёплый золотой цвет для свечения -->
+      <feComponentTransfer in="blur1" result="warmBlur1">
+        <feFuncA type="linear" slope="0.7"/>
+      </feComponentTransfer>
+      <feComponentTransfer in="blur2" result="warmBlur2">
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      
+      <!-- Золотой цвет с тёплым оттенком -->
+      <feFlood flood-color="#FFD700" flood-opacity="1" result="goldColor"/>
+      <feFlood flood-color="#FFA500" flood-opacity="0.5" result="warmColor"/>
+      
+      <!-- Применяем цвет к размытию -->
+      <feComposite in="goldColor" in2="warmBlur1" operator="in" result="goldGlow1"/>
+      <feComposite in="warmColor" in2="warmBlur2" operator="in" result="goldGlow2"/>
+      
+      <!-- Объединяем слои -->
       <feMerge>
-        <feMergeNode in="blur2"/>
-        <feMergeNode in="blur1"/>
+        <feMergeNode in="goldGlow2"/>
+        <feMergeNode in="goldGlow1"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
     
-    <!-- Усиленное свечение для каждой буквы (пик анимации) -->
-    <filter id="glowLetterStrong" x="-70%" y="-70%" width="240%" height="240%">
-      <feGaussianBlur stdDeviation="8" result="blur1"/>
-      <feGaussianBlur stdDeviation="16" result="blur2"/>
-      <feGaussianBlur stdDeviation="28" result="blur3"/>
+    <!-- Усиленное тёплое золотое свечение -->
+    <filter id="goldGlowStrong" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur1"/>
+      <feGaussianBlur stdDeviation="10" result="blur2"/>
+      <feGaussianBlur stdDeviation="18" result="blur3"/>
+      
+      <feComponentTransfer in="blur1" result="warmBlur1">
+        <feFuncA type="linear" slope="0.9"/>
+      </feComponentTransfer>
+      <feComponentTransfer in="blur2" result="warmBlur2">
+        <feFuncA type="linear" slope="0.7"/>
+      </feComponentTransfer>
+      <feComponentTransfer in="blur3" result="warmBlur3">
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      
+      <feFlood flood-color="#FFD700" flood-opacity="1" result="goldColor"/>
+      <feFlood flood-color="#FFB800" flood-opacity="0.6" result="warmColor"/>
+      
+      <feComposite in="goldColor" in2="warmBlur1" operator="in" result="goldGlow1"/>
+      <feComposite in="warmColor" in2="warmBlur2" operator="in" result="goldGlow2"/>
+      <feComposite in="goldColor" in2="warmBlur3" operator="in" result="goldGlow3"/>
+      
       <feMerge>
-        <feMergeNode in="blur3"/>
-        <feMergeNode in="blur2"/>
-        <feMergeNode in="blur1"/>
-        <feMergeNode in="blur1"/>
+        <feMergeNode in="goldGlow3"/>
+        <feMergeNode in="goldGlow2"/>
+        <feMergeNode in="goldGlow1"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
   
   <!-- Первая строка текста -->
-  <g filter="url(#glowLetter)">
-    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle">
+  <g filter="url(#goldGlow)">
+    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#4A4A4A" text-anchor="middle" dominant-baseline="middle">
       Приветствуем на странице нашей команды.
       
-      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#4A4A4A;#5A5A5A;#4A4A4A" dur="2s" repeatCount="indefinite"/>
     </text>
   </g>
   
-  <!-- Усиленное свечение для первой строки -->
-  <g filter="url(#glowLetterStrong)">
-    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle" opacity="0">
+  <!-- Усиленное золотое свечение для первой строки -->
+  <g filter="url(#goldGlowStrong)">
+    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#4A4A4A" text-anchor="middle" dominant-baseline="middle" opacity="0">
       Приветствуем на странице нашей команды.
       
-      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="fill" values="#4A4A4A;#5A5A5A;#4A4A4A" dur="2s" repeatCount="indefinite"/>
     </text>
   </g>
   
-  <!-- Вторая строка текста (тот же цвет) -->
-  <g filter="url(#glowLetter)">
-    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle">
+  <!-- Вторая строка текста -->
+  <g filter="url(#goldGlow)">
+    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#4A4A4A" text-anchor="middle" dominant-baseline="middle">
       Мы necoStydio и скоро здесь появятся классные игры.
       
-      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="opacity" values="0.95;1;0.95" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="fill" values="#4A4A4A;#5A5A5A;#4A4A4A" dur="2s" repeatCount="indefinite" begin="0.3s"/>
     </text>
   </g>
   
-  <!-- Усиленное свечение для второй строки -->
-  <g filter="url(#glowLetterStrong)">
-    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle" opacity="0">
+  <!-- Усиленное золотое свечение для второй строки -->
+  <g filter="url(#goldGlowStrong)">
+    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#4A4A4A" text-anchor="middle" dominant-baseline="middle" opacity="0">
       Мы necoStydio и скоро здесь появятся классные игры.
       
-      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.6s"/>
-      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+      <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+      <animate attributeName="fill" values="#4A4A4A;#5A5A5A;#4A4A4A" dur="2s" repeatCount="indefinite" begin="0.6s"/>
     </text>
   </g>
 </svg>
