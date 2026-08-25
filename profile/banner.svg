@@ -1,68 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1300" height="160" viewBox="0 0 1300 160">
   <defs>
-    <!-- Базовое свечение -->
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="8" result="blur1"/>
-      <feGaussianBlur stdDeviation="15" result="blur2"/>
+    <!-- Индивидуальное свечение для каждой буквы -->
+    <filter id="glowLetter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
       <feMerge>
         <feMergeNode in="blur2"/>
-        <feMergeNode in="blur1"/>
         <feMergeNode in="blur1"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
     
-    <!-- Усиленное контрастное свечение (пик анимации) -->
-    <filter id="glowStrong" x="-70%" y="-70%" width="240%" height="240%">
-      <feGaussianBlur stdDeviation="10" result="blur1"/>
-      <feGaussianBlur stdDeviation="20" result="blur2"/>
-      <feGaussianBlur stdDeviation="35" result="blur3"/>
+    <!-- Усиленное свечение для каждой буквы (пик анимации) -->
+    <filter id="glowLetterStrong" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="16" result="blur2"/>
+      <feGaussianBlur stdDeviation="28" result="blur3"/>
       <feMerge>
         <feMergeNode in="blur3"/>
         <feMergeNode in="blur2"/>
-        <feMergeNode in="blur2"/>
         <feMergeNode in="blur1"/>
         <feMergeNode in="blur1"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-
-    <!-- Градиент для обводки -->
-    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#8FA4B5">
-        <animate attributeName="stop-color" values="#8FA4B5;#B5C9D9;#8FA4B5" dur="3s" repeatCount="indefinite"/>
-      </stop>
-      <stop offset="100%" stop-color="#B5C9D9">
-        <animate attributeName="stop-color" values="#B5C9D9;#8FA4B5;#B5C9D9" dur="3s" repeatCount="indefinite"/>
-      </stop>
-    </linearGradient>
   </defs>
   
-  <!-- Фоновый прямоугольник с пульсирующей обводкой -->
-  <rect x="15" y="15" width="1270" height="130" rx="20" fill="none" stroke="url(#borderGradient)" stroke-width="3">
-    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
-    <animate attributeName="stroke-width" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  
   <!-- Первая строка текста -->
-  <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="32" font-weight="500" fill="#8FA4B5" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">
-    Приветствуем на странице нашей команды.
-    
-    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-    
-    <!-- Переключение между обычным и усиленным свечением -->
-    <set attributeName="filter" to="url(#glowStrong)" begin="0.3s;2.3s" dur="0.7s"/>
-    <set attributeName="filter" to="url(#glow)" begin="1s;3s" dur="0.7s"/>
-  </text>
+  <g filter="url(#glowLetter)">
+    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle">
+      Приветствуем на странице нашей команды.
+      
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite"/>
+    </text>
+  </g>
   
-  <!-- Вторая строка текста -->
-  <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="32" font-weight="500" fill="#B5C9D9" text-anchor="middle" dominant-baseline="middle" filter="url(#glow)">
-    Мы necoStydio и скоро здесь появятся классные игры.
-    
-    <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" begin="0.3s"/>
-    
-    <!-- Переключение между обычным и усиленным свечением (с задержкой) -->
-    <set attributeName="filter" to="url(#glowStrong)" begin="0.6s;2.6s" dur="0.7s"/>
-    <set attributeName="filter" to="url(#glow)" begin="1.3s;3.3s" dur="0.7s"/>
-  </text>
+  <!-- Усиленное свечение для первой строки -->
+  <g filter="url(#glowLetterStrong)">
+    <text x="650" y="68" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle" opacity="0">
+      Приветствуем на странице нашей команды.
+      
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite"/>
+    </text>
+  </g>
+  
+  <!-- Вторая строка текста (тот же цвет) -->
+  <g filter="url(#glowLetter)">
+    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle">
+      Мы necoStydio и скоро здесь появятся классные игры.
+      
+      <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </text>
+  </g>
+  
+  <!-- Усиленное свечение для второй строки -->
+  <g filter="url(#glowLetterStrong)">
+    <text x="650" y="108" font-family="JetBrains Mono, monospace" font-size="34" font-weight="700" fill="#5A7A8A" text-anchor="middle" dominant-baseline="middle" opacity="0">
+      Мы necoStydio и скоро здесь появятся классные игры.
+      
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+      <animate attributeName="fill" values="#5A7A8A;#8FA4B5;#5A7A8A" dur="2s" repeatCount="indefinite" begin="0.6s"/>
+    </text>
+  </g>
 </svg>
