@@ -1,7 +1,4 @@
 <div align="center">
-  
-<img src='https://'>
-  
-<img src='https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=34&duration=4000&pause=1000&color=8FA4B5&center=true&vCenter=true&multiline=true&repeat=false&&width=1300&height=160&lines=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D1%83%D0%B5%D0%BC+%D0%BD%D0%B0+%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5+%D0%BD%D0%B0%D1%88%D0%B5%D0%B9+%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B.;%D0%9C%D1%8B+necoStydio+%D0%B8+%D1%81%D0%BA%D0%BE%D1%80%D0%BE+%D0%BD%D0%B0+%D1%8D%D1%82%D0%BE%D0%B9+%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5+%D0%BF%D0%BE%D1%8F%D0%B2%D1%8F%D1%82%D1%81%D1%8F+%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BD%D1%8B%D0%B5+%D0%B8%D0%B3%D1%80%D1%8B.'/>
-
+  <img src='https://github.com/NECOStydio/.github/blob/main/profile/Neco.png' width="15%" align="right" />
+  <img src='https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=400&size=36&duration=4000&pause=1000&color=8FA4B5&center=true&vCenter=true&multiline=true&repeat=false&width=1250&height=180&lines=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D1%83%D0%B5%D0%BC%20%D0%BD%D0%B0%20%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B5%20%D0%BD%D0%B0%D1%88%D0%B5%D0%B9%20%D0%BA%D0%BE%D0%BC%D0%B0%D0%BD%D0%B4%D1%8B...;%D0%93%D0%BE%D1%82%D0%BE%D0%B2%D1%8C%D1%82%D0%B5%D1%81%D1%8C%20%E2%80%94%20%D1%81%D0%BA%D0%BE%D1%80%D0%BE%20%D0%B7%D0%B4%D0%B5%D1%81%D1%8C%20%D0%BF%D0%BE%D1%8F%D0%B2%D1%8F%D1%82%D1%81%D1%8F%20%D0%BD%D0%B0%D1%88%D0%B8%20%D0%B8%D0%B3%D1%80%D1%8B!' width="75%" />
 </div>
