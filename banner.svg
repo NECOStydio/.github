@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="140" viewBox="0 0 1300 140">
+  <defs>
+    <!-- Градиент для свечения -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Анимированный градиент -->
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A7A459">
+        <animate attributeName="stop-color" values="#A7A459;#D4CF7A;#A7A459" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#D4CF7A">
+        <animate attributeName="stop-color" values="#D4CF7A;#A7A459;#D4CF7A" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+  
+  <!-- Фоновое свечение -->
+  <rect x="10" y="10" width="1280" height="120" rx="20" fill="none" stroke="url(#gradient)" stroke-width="3" opacity="0.6">
+    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Текст -->
+  <text x="650" y="55" font-family="JetBrains Mono, monospace" font-size="28" font-weight="500" fill="#A7A459" text-anchor="middle" filter="url(#glow)">
+    Приветствуем на странице нашей команды.
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+  </text>
+  
+  <text x="650" y="95" font-family="JetBrains Mono, monospace" font-size="28" font-weight="500" fill="#D4CF7A" text-anchor="middle" filter="url(#glow)">
+    Мы necoStydio и скоро здесь появятся классные игры.
+    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </text>
+</svg>
