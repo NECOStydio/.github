@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="160" viewBox="0 0 1300 160">
+  <defs>
+    <!-- Свечение (фильтр) -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Усиленное свечение для 50% анимации -->
+    <filter id="glowStrong">
+      <feGaussianBlur stdDeviation="15" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Градиент для обводки -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8FA4B5">
+        <animate attributeName="stop-color" values="#8FA4B5;#B5C9D9;#8FA4B5" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#B5C9D9">
+        <animate attributeName="stop-color" values="#B5C9D9;#8FA4B5;#B5C9D9" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+  
+  <!-- Фоновый прямоугольник с пульсирующей обводкой -->
+  <rect x="15" y="15" width="1270" height="130" rx="20" fill="none" stroke="url(#borderGradient)" stroke-width="2.5">
+    <!-- Пульсация прозрачности обводки -->
+    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>
+    <!-- Пульсация размера (эффект дыхания) -->
+    <animateTransform attributeName="transform" type="scale" values="1;1.01;1" dur="2s" repeatCount="indefinite" additive="sum"/>
+  </rect>
+  
+  <!-- Первая строка текста -->
+  <text x="650" y="55" font-family="JetBrains Mono, monospace" font-size="30" font-weight="500" fill="#8FA4B5" text-anchor="middle" filter="url(#glow)">
+    Приветствуем на странице нашей команды.
+    
+    <!-- Анимация пульсации текста -->
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="2s" repeatCount="indefinite" additive="sum"/>
+    
+    <!-- Анимация фильтра (усиление свечения) -->
+    <set attributeName="filter" to="url(#glowStrong)" begin="0.5s;2.5s" dur="0.01s"/>
+    <set attributeName="filter" to="url(#glow)" begin="1.5s;3.5s" dur="0.01s"/>
+  </text>
+  
+  <!-- Вторая строка текста -->
+  <text x="650" y="100" font-family="JetBrains Mono, monospace" font-size="30" font-weight="500" fill="#B5C9D9" text-anchor="middle" filter="url(#glow)">
+    Мы necoStydio и скоро здесь появятся классные игры.
+    
+    <!-- Анимация пульсации текста (со сдвигом по фазе) -->
+    <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 -3;0 0" dur="2s" repeatCount="indefinite" begin="0.3s" additive="sum"/>
+    
+    <!-- Анимация фильтра -->
+    <set attributeName="filter" to="url(#glowStrong)" begin="0.8s;2.8s" dur="0.01s"/>
+    <set attributeName="filter" to="url(#glow)" begin="1.8s;3.8s" dur="0.01s"/>
+  </text>
+</svg>
